@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trust Foundation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            overflow-x: hidden;
+        }
+        body { font-family: 'Roboto', Arial, sans-serif; min-height: 100vh; margin: 0; transition: background 0.5s; }
+        h1 {
+            color: #2c3e50;
+            font-size: 3.2em;
+            letter-spacing: 2px;
+            margin-bottom: 18px;
+            text-align: center;
+            font-family: 'Montserrat', Arial, sans-serif;
+            font-weight: 700;
+        }
+        h2, h3 {
+            font-family: 'Roboto', Arial, sans-serif;
+            font-weight: 500;
+        }
+        p { color: #555; }
+        .container {
+            min-height: 100vh;
+            width: 100vw;
+            max-width: 100vw;
+            margin: 0;
+            background: transparent;
+            padding: 18px 0 0 0;
+            border-radius: 0;
+            box-shadow: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-sizing: border-box;
+            overflow-x: hidden;
+        }
+        .tabs {
+            display: flex;
+            margin-bottom: 32px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .tab {
+            padding: 10px 24px;
+            cursor: pointer;
+            background: #eee;
+            border-radius: 8px 8px 0 0;
+            margin-right: 5px;
+            transition: background 0.3s, color 0.3s, transform 0.2s;
+            font-weight: 500;
+        }
+        .tab.active { background: #2c3e50; color: #fff; }
+        .tab:hover:not(.active) { background: #3498db; color: #fff; transform: translateY(-2px) scale(1.05); }
+        .tab-content {
+            width: 100%;
+            max-width: 1240px;
+            margin: 0 auto;
+            box-sizing: border-box;
+            padding: 0 8px;
+        }
+        .tab-content.active { display: block; }
+        .greeting { background: #eaf6fb; border-left: 5px solid #3498db; padding: 15px; margin-bottom: 20px; border-radius: 5px; font-size: 1.1em; }
+        .education-grid, .section-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
+            width: 100%;
+            max-width: 100vw;
+            margin: 0 auto 32px auto;
+            box-sizing: border-box;
+            justify-items: center;
+            overflow-x: hidden;
+        }
+        .edu-card, .section-card {
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 4px 24px rgba(44,62,80,0.13);
+            padding: 28px 22px 22px 22px;
+            min-height: 260px;
+            transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            animation: eduCardAppear 0.7s cubic-bezier(.68,-0.55,.27,1.55) both;
+            width: 100%;
+            max-width: 370px;
+        }
+        .edu-card:hover, .section-card:hover {
+            transform: scale(1.06) rotate(-2deg);
+            box-shadow: 0 8px 36px rgba(44,62,80,0.22);
+            background: linear-gradient(120deg, #fffde4 0%, #ffe680 100%);
+            z-index: 2;
+        }
+        .edu-card h3, .section-card h3 { margin-top: 0; margin-bottom: 10px; }
+        .edu-card ul, .section-card ul { margin: 0 0 0 18px; }
+        @keyframes eduCardAppear {
+            0% { opacity: 0; transform: translateY(60px) scale(0.9); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        @media (max-width: 900px) {
+            .container {
+                padding: 18px 0 0 0;
+            }
+            .tab-content {
+                max-width: 98vw;
+                padding: 0 6px;
+            }
+            .section-grid {
+                gap: 18px;
+            }
+        }
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.3em;
+            }
+            .tabs {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .tab {
+                margin-right: 0;
+                margin-bottom: 6px;
+                border-radius: 8px;
+            }
+            .section-grid {
+                grid-template-columns: 1fr;
+                max-width: 100vw;
+                gap: 12px;
+            }
+            .section-card {
+                max-width: 98vw;
+                min-width: 0;
+                padding: 16px 8px 12px 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Sandy Goodwill Trust</h1>
+        <div class="tabs">
+            <div class="tab active" onclick="showTab(0)">Education</div>
+            <div class="tab" onclick="showTab(1)">Health</div>
+            <div class="tab" onclick="showTab(2)">Women Empowerment Trust</div>
+            <div class="tab" onclick="showTab(3)">Contact</div>
+        </div>
+        <div class="tab-content active">
+            <div class="greeting">Welcome to the Education Trust! We believe in empowering the next generation through quality education and learning opportunities.</div>
+            <div class="section-grid">
+                <div class="section-card" style="background:#f7faff;">
+                    <h3 style="color:#3498db;">Scholarships & Awards</h3>
+                    <ul>
+                        <li>Annual merit-based scholarships</li>
+                        <li>Special awards for girl students</li>
+                        <li>Support for differently-abled achievers</li>
+                        <li>Recognition for creative talents</li>
+                    </ul>
+                </div>
+                <div class="section-card" style="background:#fff8e1;">
+                    <h3 style="color:#f39c12;">Workshops & Camps</h3>
+                    <ul>
+                        <li>Summer camps for holistic growth</li>
+                        <li>Science, art, and music workshops</li>
+                        <li>Soft skills and communication bootcamps</li>
+                        <li>Environmental education drives</li>
+                    </ul>
+                </div>
+                <div class="section-card" style="background:#e8f5e9;">
+                    <h3 style="color:#27ae60;">Mentorship & Guidance</h3>
+                    <ul>
+                        <li>Mentor-mentee programs with professionals</li>
+                        <li>Career counseling sessions</li>
+                        <li>Parent-teacher engagement events</li>
+                        <li>Student exchange and exposure visits</li>
+                    </ul>
+                </div>
+                <div class="section-card" style="background:#fce4ec;">
+                    <h3 style="color:#e84393;">Digital & Remedial Learning</h3>
+                    <ul>
+                        <li>Online learning resources and e-library</li>
+                        <li>Remedial classes for slow learners</li>
+                        <li>Digital literacy for rural children</li>
+                        <li>After-school learning centers</li>
+                    </ul>
+                </div>
+                <div class="section-card" style="background:#e3e0f7;">
+                    <h3 style="color:#6c5ce7;">Community & Outreach</h3>
+                    <ul>
+                        <li>Awareness drives on child rights</li>
+                        <li>Support for drop-out students</li>
+                        <li>Collaboration with local NGOs</li>
+                        <li>Volunteer opportunities for youth</li>
+                    </ul>
+                </div>
+                <div class="section-card" style="background:#fff3e0;">
+                    <h3 style="color:#d35400;">Special Initiatives</h3>
+                    <ul>
+                        <li>Nutrition and midday meal support</li>
+                        <li>Annual educational tours</li>
+                        <li>Celebration of National Education Day</li>
+                        <li>Annual awards for academic excellence</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="tab-content">
+            <div class="greeting">Welcome to the Health Trust! We are committed to building a healthier community through accessible healthcare and wellness programs.</div>
+            <div class="section-grid">
+                <div class="section-card" style="background:#e0f7fa;">
+                    <h3 style="color:#00bcd4;">Health Camps</h3>
+                    <ul>
+                        <li>Free general health check-up camps</li>
+                        <li>Eye and dental screening programs</li>
+                        <li>Blood donation drives</li>
+                        <li>Vaccination and immunization camps</li>
+                    </ul>
+                </div>
+                <div class="section-card" style="background:#f8bbd0;">
+                    <h3 style="color:#e91e63;">Awareness & Wellness</h3>
+                    <ul>
+                        <li>Awareness sessions on hygiene and sanitation</li>
+                        <li>Workshops on nutrition and healthy living</li>
+                        <li>Yoga and wellness workshops</li>
+                        <li>Workshops on mental health and counseling</li>
+                    </ul>
+                </div>
+                <div class="section-card" style="background:#fff9c4;">
+                    <h3 style="color:#fbc02d;">Medical Support</h3>
+                    <ul>
+                        <li>Distribution of free medicines</li>
+                        <li>Mobile health clinics for remote areas</li>
+                        <li>Support for chronic illness patients</li>
+                        <li>Medical support for senior citizens</li>
+                    </ul>
+                </div>
+                <div class="section-card" style="background:#c8e6c9;">
+                    <h3 style="color:#388e3c;">Community Health</h3>
+                    <ul>
+                        <li>Health education in schools</li>
+                        <li>Collaboration with hospitals and clinics</li>
+                        <li>Telemedicine support for rural areas</li>
+                        <li>Annual health awareness marathons</li>
+                    </ul>
+                </div>
+                <div class="section-card" style="background:#ffe0b2;">
+                    <h3 style="color:#ff9800;">Special Programs</h3>
+                    <ul>
+                        <li>Sanitary napkin distribution and awareness</li>
+                        <li>Support for physically challenged individuals</li>
+                        <li>Organ donation awareness</li>
+                        <li>Support for cancer and critical illness patients</li>
+                    </ul>
+                </div>
+                <div class="section-card" style="background:#e1bee7;">
+                    <h3 style="color:#8e24aa;">Support & Volunteering</h3>
+                    <ul>
+                        <li>Volunteer opportunities for medical professionals</li>
+                        <li>Distribution of health kits</li>
+                        <li>Support for HIV/AIDS awareness</li>
+                        <li>Celebration of World Health Day</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="tab-content">
+            <div class="greeting">Welcome to the Women Empowerment Trust! We strive to create opportunities and a safe environment for women to grow and lead.</div>
+            <div class="section-grid">
+                <div class="section-card" style="background:#fce4ec;">
+                    <h3 style="color:#e84393;">Skill Development</h3>
+                    <ul>
+                        <li>Skill development workshops (tailoring, crafts, IT, etc.)</li>
+                        <li>Entrepreneurship training and microfinance support</li>
+                        <li>Legal awareness and rights education</li>
+                        <li>Self-defense and safety training</li>
+                    </ul>
+                </div>
+                <div class="section-card" style="background:#e3e0f7;">
+                    <h3 style="color:#6c5ce7;">Health & Hygiene</h3>
+                    <ul>
+                        <li>Health and hygiene awareness for women</li>
+                        <li>Support for girl child education</li>
+                        <li>Mentorship programs with successful women leaders</li>
+                        <li>Workshops on financial literacy</li>
+                    </ul>
+                </div>
+                <div class="section-card" style="background:#fff3e0;">
+                    <h3 style="color:#d35400;">Empowerment & Rights</h3>
+                    <ul>
+                        <li>Support for women in distress and crisis intervention</li>
+                        <li>Awareness campaigns against domestic violence</li>
+                        <li>Formation of self-help groups (SHGs)</li>
+                        <li>Leadership and personality development programs</li>
+                    </ul>
+                </div>
+                <div class="section-card" style="background:#e8f5e9;">
+                    <h3 style="color:#27ae60;">Community & Support</h3>
+                    <ul>
+                        <li>Support for single mothers and widows</li>
+                        <li>Health camps focused on women's health</li>
+                        <li>Workshops on digital literacy</li>
+                        <li>Support for women entrepreneurs in rural areas</li>
+                    </ul>
+                </div>
+                <div class="section-card" style="background:#fff8e1;">
+                    <h3 style="color:#f39c12;">Awareness & Advocacy</h3>
+                    <ul>
+                        <li>Community awareness on gender equality</li>
+                        <li>Workshops on reproductive health</li>
+                        <li>Support for women with disabilities</li>
+                        <li>Legal aid and counseling services</li>
+                    </ul>
+                </div>
+                <div class="section-card" style="background:#f7faff;">
+                    <h3 style="color:#3498db;">Special Initiatives</h3>
+                    <ul>
+                        <li>Vocational training and job placement support</li>
+                        <li>Workshops on mental health and well-being</li>
+                        <li>Support for victims of trafficking</li>
+                        <li>Awareness on menstrual hygiene</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="tab-content">
+            <h2>Contact Us</h2>
+            <p><strong>Email:</strong> <a href="mailto:info@trustfoundation.org">info@trustfoundation.org</a></p>
+            <p><strong>Phone:</strong> +91-12345-67890</p>
+            <p><strong>Address:</strong> 123, Trust Foundation Road, City, Country</p>
+            <p><strong>Office Hours:</strong> Monday to Friday, 9:00 AM to 6:00 PM</p>
+            <p><strong>Follow us on social media:</strong></p>
+            <ul>
+                <li><a href="#">Facebook</a></li>
+                <li><a href="#">Twitter</a></li>
+                <li><a href="#">Instagram</a></li>
+                <li><a href="#">LinkedIn</a></li>
+            </ul>
+            <p><strong>General Enquiries:</strong> For any questions or to get involved, please email or call us. We welcome volunteers, donors, and partners to join our mission.</p>
+            <p><strong>Feedback:</strong> We value your feedback. Please let us know how we can improve our services and outreach.</p>
+            <p><strong>Media Contact:</strong> For press and media enquiries, email <a href="mailto:media@trustfoundation.org">media@trustfoundation.org</a></p>
+            <p><strong>Visit Us:</strong> Our office is open to visitors during office hours. Please schedule an appointment in advance.</p>
+            <p><strong>Support Us:</strong> Your support helps us reach more people. Donate, volunteer, or spread the word!</p>
+        </div>
+    </div>
+    <script>
+        const tabBackgrounds = [
+            'linear-gradient(135deg, #fffde4 0%, #ffe680 100%)', // Education - yellow
+            'linear-gradient(135deg, #e0f7fa 0%, #b3e5fc 100%)', // Health - light blue
+            'linear-gradient(135deg, #fceabb 0%, #f8b500 100%)', // Women Empowerment - gold
+            'linear-gradient(135deg, #f8ffae 0%, #43c6ac 100%)'  // Contact - greenish
+        ];
+        function showTab(index) {
+            var tabs = document.querySelectorAll('.tab');
+            var contents = document.querySelectorAll('.tab-content');
+            tabs.forEach((tab, i) => {
+                tab.classList.toggle('active', i === index);
+                contents[i].classList.toggle('active', i === index);
+            });
+            document.body.style.background = tabBackgrounds[index];
+        }
+        // Set initial background on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            document.body.style.background = tabBackgrounds[0];
+        });
+    </script>
+</body>
+</html>
