@@ -13,7 +13,57 @@
             box-sizing: border-box;
             overflow-x: hidden;
         }
-        body { font-family: 'Roboto', Arial, sans-serif; min-height: 100vh; margin: 0; transition: background 0.5s; }
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            min-height: 100vh;
+            margin: 0;
+            transition: background 0.5s;
+            background: linear-gradient(135deg, #0f2027 0%, #2c5364 100%);
+        }
+        .hero {
+            width: 100vw;
+            min-height: 340px;
+            background: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 20px 40px 20px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+        .hero h1 {
+            font-family: 'Montserrat', Arial, sans-serif;
+            font-size: 3.5em;
+            color: #1a237e;
+            margin: 0 0 18px 0;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+        .hero p {
+            font-size: 1.4em;
+            color: #333;
+            margin-bottom: 32px;
+        }
+        .hero .cta-btn {
+            background: #1a237e;
+            color: #fff;
+            font-size: 1.2em;
+            padding: 16px 38px;
+            border: none;
+            border-radius: 32px;
+            font-family: 'Montserrat', Arial, sans-serif;
+            font-weight: 700;
+            letter-spacing: 1px;
+            cursor: pointer;
+            box-shadow: 0 4px 16px rgba(26,35,126,0.12);
+            transition: background 0.3s, transform 0.2s;
+        }
+        .hero .cta-btn:hover {
+            background: #fbc02d;
+            color: #1a237e;
+            transform: scale(1.05);
+        }
         h1 {
             color: #2c3e50;
             font-size: 3.2em;
@@ -106,6 +156,81 @@
             0% { opacity: 0; transform: translateY(60px) scale(0.9); }
             100% { opacity: 1; transform: translateY(0) scale(1); }
         }
+        .slider {
+            width: 100vw;
+            max-width: 1200px;
+            margin: 0 auto 36px auto;
+            position: relative;
+            overflow: hidden;
+            border-radius: 18px;
+            box-shadow: 0 4px 24px rgba(44,62,80,0.13);
+        }
+        .slides {
+            position: relative;
+            width: 100%;
+            height: 320px;
+        }
+        .slide {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            width: 100%;
+            height: 320px;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 0.8s cubic-bezier(.68,-0.55,.27,1.55);
+            z-index: 1;
+        }
+        .slide.active {
+            opacity: 1;
+            z-index: 2;
+        }
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(26,35,126,0.7);
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 44px;
+            height: 44px;
+            font-size: 1.8em;
+            cursor: pointer;
+            z-index: 3;
+            transition: background 0.2s;
+        }
+        .slider-btn:hover {
+            background: #fbc02d;
+            color: #1a237e;
+        }
+        .slider-btn.left { left: 18px; }
+        .slider-btn.right { right: 18px; }
+        .slider-dots {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 12px;
+            gap: 10px;
+        }
+        .slider-dot {
+            width: 13px;
+            height: 13px;
+            border-radius: 50%;
+            background: #bbb;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+        }
+        .slider-dot.active {
+            background: #1a237e;
+            transform: scale(1.2);
+        }
+        @media (max-width: 700px) {
+            .slide, .slides { height: 180px; }
+            .slider { max-width: 100vw; }
+        }
         @media (max-width: 900px) {
             .container {
                 padding: 18px 0 0 0;
@@ -145,234 +270,375 @@
                 padding: 16px 8px 12px 8px;
             }
         }
+        /* Floating Enroll Form */
+        #floatingEnroll {
+            position: fixed;
+            bottom: 32px;
+            right: 32px;
+            z-index: 1000;
+            max-width: 340px;
+            width: 90vw;
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 4px 24px rgba(44,62,80,0.18);
+            padding: 24px 18px 18px 18px;
+            transition: transform 0.3s;
+        }
+        /* Scrolling News Bar */
+        .news-bar {
+            width: 100vw;
+            background: #1a237e;
+            color: #fff;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 9999;
+            overflow: hidden;
+        }
+        .news-content {
+            white-space: nowrap;
+            animation: scrollNews 18s linear infinite;
+            font-size: 1.08em;
+            padding: 8px 0;
+        }
+        @keyframes scrollNews {
+            0% { transform: translateX(100vw); }
+            100% { transform: translateX(-120vw); }
+        }
+        /* Scrolling Image/Carousel */
+        #scrollingImages {
+            display: flex;
+            gap: 0;
+            animation: scrollImg 30s linear infinite;
+        }
+        @keyframes scrollImg {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-60%); }
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Sandy Goodwill Trust</h1>
-        <div class="tabs">
-            <div class="tab active" onclick="showTab(0)">Education</div>
-            <div class="tab" onclick="showTab(1)">Health</div>
-            <div class="tab" onclick="showTab(2)">Women Empowerment Trust</div>
-            <div class="tab" onclick="showTab(3)">Contact</div>
-        </div>
-        <div class="tab-content active">
-            <div class="greeting">Welcome to the Education Trust! We believe in empowering the next generation through quality education and learning opportunities.</div>
-            <div class="section-grid">
-                <div class="section-card" style="background:#f7faff;">
-                    <h3 style="color:#3498db;">Scholarships & Awards</h3>
-                    <ul>
-                        <li>Annual merit-based scholarships</li>
-                        <li>Special awards for girl students</li>
-                        <li>Support for differently-abled achievers</li>
-                        <li>Recognition for creative talents</li>
-                    </ul>
-                </div>
-                <div class="section-card" style="background:#fff8e1;">
-                    <h3 style="color:#f39c12;">Workshops & Camps</h3>
-                    <ul>
-                        <li>Summer camps for holistic growth</li>
-                        <li>Science, art, and music workshops</li>
-                        <li>Soft skills and communication bootcamps</li>
-                        <li>Environmental education drives</li>
-                    </ul>
-                </div>
-                <div class="section-card" style="background:#e8f5e9;">
-                    <h3 style="color:#27ae60;">Mentorship & Guidance</h3>
-                    <ul>
-                        <li>Mentor-mentee programs with professionals</li>
-                        <li>Career counseling sessions</li>
-                        <li>Parent-teacher engagement events</li>
-                        <li>Student exchange and exposure visits</li>
-                    </ul>
-                </div>
-                <div class="section-card" style="background:#fce4ec;">
-                    <h3 style="color:#e84393;">Digital & Remedial Learning</h3>
-                    <ul>
-                        <li>Online learning resources and e-library</li>
-                        <li>Remedial classes for slow learners</li>
-                        <li>Digital literacy for rural children</li>
-                        <li>After-school learning centers</li>
-                    </ul>
-                </div>
-                <div class="section-card" style="background:#e3e0f7;">
-                    <h3 style="color:#6c5ce7;">Community & Outreach</h3>
-                    <ul>
-                        <li>Awareness drives on child rights</li>
-                        <li>Support for drop-out students</li>
-                        <li>Collaboration with local NGOs</li>
-                        <li>Volunteer opportunities for youth</li>
-                    </ul>
-                </div>
-                <div class="section-card" style="background:#fff3e0;">
-                    <h3 style="color:#d35400;">Special Initiatives</h3>
-                    <ul>
-                        <li>Nutrition and midday meal support</li>
-                        <li>Annual educational tours</li>
-                        <li>Celebration of National Education Day</li>
-                        <li>Annual awards for academic excellence</li>
-                    </ul>
-                </div>
+    <!-- HERO SECTION -->
+    <section class="hero" style="background:linear-gradient(120deg,#f6d365 0%,#fda085 100%);padding:70px 20px 50px 20px;text-align:center;">
+        <h1 style="font-family:'Montserrat',Arial,sans-serif;font-size:3.2em;color:#1a237e;font-weight:700;letter-spacing:2px;margin-bottom:18px;">Sandy GoodWill Trust</h1>
+        <p style="font-size:1.35em;color:#333;max-width:700px;margin:0 auto 28px auto;">We empower volunteers to become change agents, fostering leadership, engagement, and community-driven impact. Join hands with us to build a better tomorrow, one local action at a time.</p>
+        <a href="#floatingEnroll" style="background:#1a237e;color:#fff;font-size:1.15em;padding:16px 38px;border:none;border-radius:32px;font-family:'Montserrat',Arial,sans-serif;font-weight:700;letter-spacing:1px;box-shadow:0 4px 16px rgba(26,35,126,0.12);transition:background 0.3s,transform 0.2s;text-decoration:none;">Become a Volunteer</a>
+    </section>
+    <!-- IMPACT METRICS SECTION -->
+    <section style="max-width:1100px;margin:40px auto 24px auto;padding:32px 18px 24px 18px;background:#fffde4;border-radius:18px;box-shadow:0 4px 24px rgba(44,62,80,0.10);text-align:center;">
+        <h2 style="font-family:'Montserrat',Arial,sans-serif;font-size:2em;color:#1a237e;margin-bottom:12px;">Our Impact</h2>
+        <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:32px;margin-top:24px;">
+            <div style="min-width:150px;flex:1 1 150px;max-width:200px;background:#fff;border-radius:12px;padding:18px 10px;box-shadow:0 2px 10px rgba(44,62,80,0.07);animation:bounceIn 1.2s;">
+                <h3 style="color:#3498db;font-size:1.3em;margin:0 0 8px 0;">+50,000</h3>
+                <p style="margin:0;font-size:1em;color:#444;">Lives Impacted</p>
+            </div>
+            <div style="min-width:150px;flex:1 1 150px;max-width:200px;background:#fff;border-radius:12px;padding:18px 10px;box-shadow:0 2px 10px rgba(44,62,80,0.07);animation:bounceIn 1.4s;">
+                <h3 style="color:#e84393;font-size:1.3em;margin:0 0 8px 0;">+7,500</h3>
+                <p style="margin:0;font-size:1em;color:#444;">Volunteers</p>
+            </div>
+            <div style="min-width:150px;flex:1 1 150px;max-width:200px;background:#fff;border-radius:12px;padding:18px 10px;box-shadow:0 2px 10px rgba(44,62,80,0.07);animation:bounceIn 1.6s;">
+                <h3 style="color:#27ae60;font-size:1.3em;margin:0 0 8px 0;">+2,000</h3>
+                <p style="margin:0;font-size:1em;color:#444;">Individuals Upskilled</p>
+            </div>
+            <div style="min-width:150px;flex:1 1 150px;max-width:200px;background:#fff;border-radius:12px;padding:18px 10px;box-shadow:0 2px 10px rgba(44,62,80,0.07);animation:bounceIn 1.8s;">
+                <h3 style="color:#f39c12;font-size:1.3em;margin:0 0 8px 0;">+50</h3>
+                <p style="margin:0;font-size:1em;color:#444;">Grassroot Leaders</p>
             </div>
         </div>
-        <div class="tab-content">
-            <div class="greeting">Welcome to the Health Trust! We are committed to building a healthier community through accessible healthcare and wellness programs.</div>
-            <div class="section-grid">
-                <div class="section-card" style="background:#e0f7fa;">
-                    <h3 style="color:#00bcd4;">Health Camps</h3>
-                    <ul>
-                        <li>Free general health check-up camps</li>
-                        <li>Eye and dental screening programs</li>
-                        <li>Blood donation drives</li>
-                        <li>Vaccination and immunization camps</li>
-                    </ul>
-                </div>
-                <div class="section-card" style="background:#f8bbd0;">
-                    <h3 style="color:#e91e63;">Awareness & Wellness</h3>
-                    <ul>
-                        <li>Awareness sessions on hygiene and sanitation</li>
-                        <li>Workshops on nutrition and healthy living</li>
-                        <li>Yoga and wellness workshops</li>
-                        <li>Workshops on mental health and counseling</li>
-                    </ul>
-                </div>
-                <div class="section-card" style="background:#fff9c4;">
-                    <h3 style="color:#fbc02d;">Medical Support</h3>
-                    <ul>
-                        <li>Distribution of free medicines</li>
-                        <li>Mobile health clinics for remote areas</li>
-                        <li>Support for chronic illness patients</li>
-                        <li>Medical support for senior citizens</li>
-                    </ul>
-                </div>
-                <div class="section-card" style="background:#c8e6c9;">
-                    <h3 style="color:#388e3c;">Community Health</h3>
-                    <ul>
-                        <li>Health education in schools</li>
-                        <li>Collaboration with hospitals and clinics</li>
-                        <li>Telemedicine support for rural areas</li>
-                        <li>Annual health awareness marathons</li>
-                    </ul>
-                </div>
-                <div class="section-card" style="background:#ffe0b2;">
-                    <h3 style="color:#ff9800;">Special Programs</h3>
-                    <ul>
-                        <li>Sanitary napkin distribution and awareness</li>
-                        <li>Support for physically challenged individuals</li>
-                        <li>Organ donation awareness</li>
-                        <li>Support for cancer and critical illness patients</li>
-                    </ul>
-                </div>
-                <div class="section-card" style="background:#e1bee7;">
-                    <h3 style="color:#8e24aa;">Support & Volunteering</h3>
-                    <ul>
-                        <li>Volunteer opportunities for medical professionals</li>
-                        <li>Distribution of health kits</li>
-                        <li>Support for HIV/AIDS awareness</li>
-                        <li>Celebration of World Health Day</li>
-                    </ul>
-                </div>
+    </section>
+    <!-- KEY PILLARS/PROGRAMS SECTION -->
+    <section style="max-width:1100px;margin:40px auto 24px auto;padding:32px 18px 24px 18px;background:#eaf6fb;border-radius:18px;box-shadow:0 4px 24px rgba(44,62,80,0.10);">
+        <h2 style="font-family:'Montserrat',Arial,sans-serif;font-size:2em;color:#1a237e;margin-bottom:18px;text-align:center;">Key Pillars of Our Approach</h2>
+        <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:32px;">
+            <div style="flex:1 1 180px;min-width:180px;max-width:220px;background:#fff;border-radius:12px;padding:18px 10px;text-align:center;box-shadow:0 2px 10px rgba(44,62,80,0.07);">
+                <img src="https://wetheleader.org/images/conscious-constituency-approach/icon-1.svg" alt="Nurturing Change Agents" style="height:48px;margin-bottom:10px;">
+                <h3 style="color:#3498db;font-size:1.1em;margin:0 0 8px 0;">Nurturing Change Agents</h3>
+                <p style="font-size:0.98em;color:#444;">Empowering volunteers as catalysts for change by nurturing leadership, skills, and grassroots action.</p>
+            </div>
+            <div style="flex:1 1 180px;min-width:180px;max-width:220px;background:#fff;border-radius:12px;padding:18px 10px;text-align:center;box-shadow:0 2px 10px rgba(44,62,80,0.07);">
+                <img src="https://wetheleader.org/images/conscious-constituency-approach/icon-2.svg" alt="SDG Achievement" style="height:48px;margin-bottom:10px;">
+                <h3 style="color:#e84393;font-size:1.1em;margin:0 0 8px 0;">SDG Achievement</h3>
+                <p style="font-size:0.98em;color:#444;">Aligning governance and grassroots initiatives with global benchmarks for measurable change.</p>
+            </div>
+            <div style="flex:1 1 180px;min-width:180px;max-width:220px;background:#fff;border-radius:12px;padding:18px 10px;text-align:center;box-shadow:0 2px 10px rgba(44,62,80,0.07);">
+                <img src="https://wetheleader.org/images/conscious-constituency-approach/icon-3.svg" alt="Community Engagement" style="height:48px;margin-bottom:10px;">
+                <h3 style="color:#27ae60;font-size:1.1em;margin:0 0 8px 0;">Community Engagement</h3>
+                <p style="font-size:0.98em;color:#444;">Empowering citizens to participate in decision-making and foster collaboration.</p>
+            </div>
+            <div style="flex:1 1 180px;min-width:180px;max-width:220px;background:#fff;border-radius:12px;padding:18px 10px;text-align:center;box-shadow:0 2px 10px rgba(44,62,80,0.07);">
+                <img src="https://wetheleader.org/images/conscious-constituency-approach/icon-4.svg" alt="Conscious Leadership" style="height:48px;margin-bottom:10px;">
+                <h3 style="color:#f39c12;font-size:1.1em;margin:0 0 8px 0;">Conscious Leadership</h3>
+                <p style="font-size:0.98em;color:#444;">Developing ethical and visionary leaders who drive governance with integrity and inclusivity.</p>
             </div>
         </div>
-        <div class="tab-content">
-            <div class="greeting">Welcome to the Women Empowerment Trust! We strive to create opportunities and a safe environment for women to grow and lead.</div>
-            <div class="section-grid">
-                <div class="section-card" style="background:#fce4ec;">
-                    <h3 style="color:#e84393;">Skill Development</h3>
-                    <ul>
-                        <li>Skill development workshops (tailoring, crafts, IT, etc.)</li>
-                        <li>Entrepreneurship training and microfinance support</li>
-                        <li>Legal awareness and rights education</li>
-                        <li>Self-defense and safety training</li>
-                    </ul>
-                </div>
-                <div class="section-card" style="background:#e3e0f7;">
-                    <h3 style="color:#6c5ce7;">Health & Hygiene</h3>
-                    <ul>
-                        <li>Health and hygiene awareness for women</li>
-                        <li>Support for girl child education</li>
-                        <li>Mentorship programs with successful women leaders</li>
-                        <li>Workshops on financial literacy</li>
-                    </ul>
-                </div>
-                <div class="section-card" style="background:#fff3e0;">
-                    <h3 style="color:#d35400;">Empowerment & Rights</h3>
-                    <ul>
-                        <li>Support for women in distress and crisis intervention</li>
-                        <li>Awareness campaigns against domestic violence</li>
-                        <li>Formation of self-help groups (SHGs)</li>
-                        <li>Leadership and personality development programs</li>
-                    </ul>
-                </div>
-                <div class="section-card" style="background:#e8f5e9;">
-                    <h3 style="color:#27ae60;">Community & Support</h3>
-                    <ul>
-                        <li>Support for single mothers and widows</li>
-                        <li>Health camps focused on women's health</li>
-                        <li>Workshops on digital literacy</li>
-                        <li>Support for women entrepreneurs in rural areas</li>
-                    </ul>
-                </div>
-                <div class="section-card" style="background:#fff8e1;">
-                    <h3 style="color:#f39c12;">Awareness & Advocacy</h3>
-                    <ul>
-                        <li>Community awareness on gender equality</li>
-                        <li>Workshops on reproductive health</li>
-                        <li>Support for women with disabilities</li>
-                        <li>Legal aid and counseling services</li>
-                    </ul>
-                </div>
-                <div class="section-card" style="background:#f7faff;">
-                    <h3 style="color:#3498db;">Special Initiatives</h3>
-                    <ul>
-                        <li>Vocational training and job placement support</li>
-                        <li>Workshops on mental health and well-being</li>
-                        <li>Support for victims of trafficking</li>
-                        <li>Awareness on menstrual hygiene</li>
-                    </ul>
-                </div>
+    </section>
+    <!-- GET INVOLVED SECTION -->
+    <section style="max-width:1100px;margin:40px auto 24px auto;padding:32px 18px 24px 18px;background:#fff3e0;border-radius:18px;box-shadow:0 4px 24px rgba(44,62,80,0.10);">
+        <h2 style="font-family:'Montserrat',Arial,sans-serif;font-size:2em;color:#1a237e;margin-bottom:18px;text-align:center;">Get Involved</h2>
+        <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:32px;">
+            <div style="flex:1 1 180px;min-width:180px;max-width:220px;background:#fff;border-radius:12px;padding:18px 10px;text-align:center;box-shadow:0 2px 10px rgba(44,62,80,0.07);">
+                <h3 style="color:#3498db;font-size:1.1em;margin:0 0 8px 0;">Volunteer</h3>
+                <p style="font-size:0.98em;color:#444;">Make a meaningful impact by dedicating your time and skills to a cause that drives positive change.</p>
+                <a href="#floatingEnroll" style="color:#3498db;font-weight:bold;text-decoration:underline;">Become a Volunteer</a>
+            </div>
+            <div style="flex:1 1 180px;min-width:180px;max-width:220px;background:#fff;border-radius:12px;padding:18px 10px;text-align:center;box-shadow:0 2px 10px rgba(44,62,80,0.07);">
+                <h3 style="color:#e84393;font-size:1.1em;margin:0 0 8px 0;">Mentor & Guide</h3>
+                <p style="font-size:0.98em;color:#444;">Guide youth and emerging leaders in their personal and professional journeys.</p>
+                <a href="#floatingEnroll" style="color:#e84393;font-weight:bold;text-decoration:underline;">Register as a Mentor</a>
+            </div>
+            <div style="flex:1 1 180px;min-width:180px;max-width:220px;background:#fff;border-radius:12px;padding:18px 10px;text-align:center;box-shadow:0 2px 10px rgba(44,62,80,0.07);">
+                <h3 style="color:#27ae60;font-size:1.1em;margin:0 0 8px 0;">Support as a Donor</h3>
+                <p style="font-size:0.98em;color:#444;">Your support empowers change, strengthens leadership, and transforms communities.</p>
+                <a href="#floatingEnroll" style="color:#27ae60;font-weight:bold;text-decoration:underline;">Support as a Donor</a>
+            </div>
+            <div style="flex:1 1 180px;min-width:180px;max-width:220px;background:#fff;border-radius:12px;padding:18px 10px;text-align:center;box-shadow:0 2px 10px rgba(44,62,80,0.07);">
+                <h3 style="color:#f39c12;font-size:1.1em;margin:0 0 8px 0;">Join as a Partner</h3>
+                <p style="font-size:0.98em;color:#444;">Collaborate on projects that align with your organization’s values.</p>
+                <a href="#floatingEnroll" style="color:#f39c12;font-weight:bold;text-decoration:underline;">Join as a Partner</a>
             </div>
         </div>
-        <div class="tab-content">
-            <h2>Contact Us</h2>
-            <p><strong>Email:</strong> <a href="mailto:info@trustfoundation.org">info@trustfoundation.org</a></p>
-            <p><strong>Phone:</strong> +91-12345-67890</p>
-            <p><strong>Address:</strong> 123, Trust Foundation Road, City, Country</p>
-            <p><strong>Office Hours:</strong> Monday to Friday, 9:00 AM to 6:00 PM</p>
-            <p><strong>Follow us on social media:</strong></p>
-            <ul>
-                <li><a href="#">Facebook</a></li>
-                <li><a href="#">Twitter</a></li>
-                <li><a href="#">Instagram</a></li>
-                <li><a href="#">LinkedIn</a></li>
-            </ul>
-            <p><strong>General Enquiries:</strong> For any questions or to get involved, please email or call us. We welcome volunteers, donors, and partners to join our mission.</p>
-            <p><strong>Feedback:</strong> We value your feedback. Please let us know how we can improve our services and outreach.</p>
-            <p><strong>Media Contact:</strong> For press and media enquiries, email <a href="mailto:media@trustfoundation.org">media@trustfoundation.org</a></p>
-            <p><strong>Visit Us:</strong> Our office is open to visitors during office hours. Please schedule an appointment in advance.</p>
-            <p><strong>Support Us:</strong> Your support helps us reach more people. Donate, volunteer, or spread the word!</p>
+    </section>
+    <!-- Scrolling Image/Carousel with Modal Preview at the Top -->
+    <div style="max-width:100vw;overflow:hidden;border-radius:0 0 18px 18px;box-shadow:0 4px 24px rgba(44,62,80,0.10);background:#fff;margin-bottom:32px;position:relative;z-index:10;">
+        <div id="scrollingImages" style="display:flex;gap:0;animation:scrollImg 30s linear infinite;cursor:pointer;">
+            <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80" alt="Impact" style="height:120px;width:auto;display:block;">
+            <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=600&q=80" alt="Volunteers" style="height:120px;width:auto;display:block;">
+            <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=600&q=80" alt="Community" style="height:120px;width:auto;display:block;">
+            <img src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=600&q=80" alt="Event" style="height:120px;width:auto;display:block;">
+            <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=600&q=80" alt="Random1" style="height:120px;width:auto;display:block;">
+            <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=600&q=80" alt="Random2" style="height:120px;width:auto;display:block;">
+            <img src="https://images.unsplash.com/photo-1519985176271-adb1088fa94c?auto=format&fit=crop&w=600&q=80" alt="Random3" style="height:120px;width:auto;display:block;">
+            <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80" alt="Repeat" style="height:120px;width:auto;display:block;">
         </div>
     </div>
+    <div id="imgModal" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.7);z-index:2000;align-items:center;justify-content:center;">
+        <img id="modalImg" src="" alt="Preview" style="max-width:90vw;max-height:80vh;border-radius:18px;box-shadow:0 8px 32px rgba(44,62,80,0.22);">
+    </div>
+    <style>
+    @keyframes scrollImg {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-60%); }
+    }
+    </style>
     <script>
-        const tabBackgrounds = [
-            'linear-gradient(135deg, #fffde4 0%, #ffe680 100%)', // Education - yellow
-            'linear-gradient(135deg, #e0f7fa 0%, #b3e5fc 100%)', // Health - light blue
-            'linear-gradient(135deg, #fceabb 0%, #f8b500 100%)', // Women Empowerment - gold
-            'linear-gradient(135deg, #f8ffae 0%, #43c6ac 100%)'  // Contact - greenish
-        ];
-        function showTab(index) {
-            var tabs = document.querySelectorAll('.tab');
-            var contents = document.querySelectorAll('.tab-content');
-            tabs.forEach((tab, i) => {
-                tab.classList.toggle('active', i === index);
-                contents[i].classList.toggle('active', i === index);
-            });
-            document.body.style.background = tabBackgrounds[index];
+    // Scrolling image modal preview
+    var imgModal = document.getElementById('imgModal');
+    var modalImg = document.getElementById('modalImg');
+    document.getElementById('scrollingImages').onclick = function(e) {
+        if(e.target.tagName === 'IMG') {
+            modalImg.src = e.target.src;
+            imgModal.style.display = 'flex';
         }
-        // Set initial background on page load
-        document.addEventListener('DOMContentLoaded', function() {
-            document.body.style.background = tabBackgrounds[0];
-        });
+    };
+    imgModal.onclick = function() { imgModal.style.display = 'none'; };
+    </script>
+    <div class="container">
+        <section class="about-section" style="max-width:1100px;margin:40px auto 24px auto;padding:32px 18px 24px 18px;background:linear-gradient(120deg,#f6d365 0%,#fda085 100%);border-radius:18px;box-shadow:0 4px 24px rgba(44,62,80,0.10);text-align:center;">
+            <h2 style="font-family:'Montserrat',Arial,sans-serif;font-size:2.2em;color:#1a237e;margin-bottom:12px;">About We The Leader Foundation</h2>
+            <p style="font-size:1.18em;color:#333;max-width:900px;margin:0 auto 18px auto;">We empower volunteers to become change agents, fostering leadership, engagement, and community-driven impact. Through structured growth, skill development, and grassroots action, they lead sustainable social initiatives for lasting change. Our mission is to connect you with local causes that inspire change—whether in education, health, sustainability, or youth leadership. Join hands with us to build a better tomorrow, one local action at a time.</p>
+            <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:32px;margin-top:24px;">
+                <div style="min-width:180px;flex:1 1 180px;max-width:220px;background:#fff;border-radius:12px;padding:18px 10px;box-shadow:0 2px 10px rgba(44,62,80,0.07);animation:bounceIn 1.2s;">
+                    <h3 style="color:#3498db;font-size:1.3em;margin:0 0 8px 0;">+50,000</h3>
+                    <p style="margin:0;font-size:1em;color:#444;">Lives Impacted</p>
+                </div>
+                <div style="min-width:180px;flex:1 1 180px;max-width:220px;background:#fff;border-radius:12px;padding:18px 10px;box-shadow:0 2px 10px rgba(44,62,80,0.07);animation:bounceIn 1.4s;">
+                    <h3 style="color:#e84393;font-size:1.3em;margin:0 0 8px 0;">+7,500</h3>
+                    <p style="margin:0;font-size:1em;color:#444;">Volunteers</p>
+                </div>
+                <div style="min-width:180px;flex:1 1 180px;max-width:220px;background:#fff;border-radius:12px;padding:18px 10px;box-shadow:0 2px 10px rgba(44,62,80,0.07);animation:bounceIn 1.6s;">
+                    <h3 style="color:#27ae60;font-size:1.3em;margin:0 0 8px 0;">+2,000</h3>
+                    <p style="margin:0;font-size:1em;color:#444;">Individuals Upskilled</p>
+                </div>
+                <div style="min-width:180px;flex:1 1 180px;max-width:220px;background:#fff;border-radius:12px;padding:18px 10px;box-shadow:0 2px 10px rgba(44,62,80,0.07);animation:bounceIn 1.8s;">
+                    <h3 style="color:#f39c12;font-size:1.3em;margin:0 0 8px 0;">+50</h3>
+                    <p style="margin:0;font-size:1em;color:#444;">Grassroot Leaders</p>
+                </div>
+            </div>
+        </section>
+        <section class="charts-section" style="max-width:700px;margin:40px auto 24px auto;padding:32px 18px 24px 18px;background:#f7faff;border-radius:18px;box-shadow:0 4px 24px rgba(44,62,80,0.10);">
+            <h2 style="color:#1a237e;font-family:'Montserrat',Arial,sans-serif;">Our Impact in Numbers</h2>
+            <p style="color:#444;font-size:1.08em;margin-bottom:18px;">We are committed to measurable, transparent impact. Our volunteers, donors, and partners help us reach more communities every year. Explore our progress below.</p>
+            <div style="display:flex;flex-wrap:wrap;gap:18px;justify-content:center;align-items:flex-start;">
+                <div style="background:#fff;border-radius:12px;padding:16px 10px;box-shadow:0 2px 10px rgba(44,62,80,0.07);margin-bottom:12px;">
+                    <canvas id="pieChart" width="180" height="180"></canvas>
+                </div>
+                <div style="background:#fff;border-radius:12px;padding:16px 10px;box-shadow:0 2px 10px rgba(44,62,80,0.07);margin-bottom:12px;">
+                    <canvas id="barChart" width="240" height="180"></canvas>
+                </div>
+            </div>
+            <div style="margin-top:24px;color:#555;font-size:1.05em;line-height:1.7;">
+                <p>Our foundation is dedicated to empowering individuals and communities through education, health, sustainability, and leadership programs. We believe in the power of collective action and strive to create opportunities for growth, learning, and positive change. Join us as a volunteer, donor, or partner and help us build a brighter, more inclusive future for all.</p>
+            </div>
+        </section>
+        <svg width="0" height="0">
+            <defs>
+                <linearGradient id="animatedGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#f6d365">
+                        <animate attributeName="stop-color" values="#f6d365;#fda085;#f6d365" dur="4s" repeatCount="indefinite" />
+                    </stop>
+                    <stop offset="100%" stop-color="#fda085">
+                        <animate attributeName="stop-color" values="#fda085;#f6d365;#fda085" dur="4s" repeatCount="indefinite" />
+                    </stop>
+                </linearGradient>
+            </defs>
+        </svg>
+        <!-- Floating Enroll Form with Animation -->
+        <div id="floatingEnroll" style="position:fixed;bottom:32px;right:32px;z-index:1000;max-width:340px;width:90vw;background:#fff;border-radius:18px;box-shadow:0 8px 32px rgba(44,62,80,0.22);padding:24px 18px 18px 18px;transition:transform 0.3s;animation:floatIn 1.2s;">
+            <button id="closeEnroll" style="position:absolute;top:8px;right:12px;background:none;border:none;font-size:1.3em;color:#888;cursor:pointer;">&times;</button>
+            <h3 style="color:#1a237e;font-family:'Montserrat',Arial,sans-serif;margin-top:0;">Become a Volunteer</h3>
+            <form id="volunteerForm" style="display:flex;flex-direction:column;gap:14px;">
+                <input type="text" name="name" placeholder="Your Name" required style="padding:10px;border-radius:8px;border:1px solid #ccc;font-size:1em;">
+                <input type="email" name="email" placeholder="Your Email" required style="padding:10px;border-radius:8px;border:1px solid #ccc;font-size:1em;">
+                <input type="text" name="phone" placeholder="Your Phone" required style="padding:10px;border-radius:8px;border:1px solid #ccc;font-size:1em;">
+                <select name="interest" required style="padding:10px;border-radius:8px;border:1px solid #ccc;font-size:1em;">
+                    <option value="">Select Area of Interest</option>
+                    <option value="Education">Education</option>
+                    <option value="Health">Health</option>
+                    <option value="Sustainability">Sustainability</option>
+                    <option value="Youth Leadership">Youth Leadership</option>
+                </select>
+                <textarea name="message" placeholder="Why do you want to volunteer?" rows="2" style="padding:10px;border-radius:8px;border:1px solid #ccc;font-size:1em;"></textarea>
+                <button type="submit" style="background:#1a237e;color:#fff;font-size:1.1em;padding:12px 0;border:none;border-radius:8px;font-family:'Montserrat',Arial,sans-serif;font-weight:700;cursor:pointer;transition:background 0.3s;">Enroll</button>
+            </form>
+            <div id="formSuccess" style="display:none;color:#27ae60;font-weight:600;margin-top:12px;">Thank you for enrolling! We will contact you soon.</div>
+        </div>
+        <button id="openEnroll" style="position:fixed;bottom:32px;right:32px;z-index:999;background:#1a237e;color:#fff;border:none;border-radius:50%;width:56px;height:56px;box-shadow:0 4px 16px rgba(44,62,80,0.18);font-size:2em;display:none;align-items:center;justify-content:center;cursor:pointer;transition:background 0.2s;">+</button>
+        <style>
+        @keyframes floatIn {
+            0% { transform: translateY(60px) scale(0.8); opacity: 0; }
+            100% { transform: translateY(0) scale(1); opacity: 1; }
+        }
+        #openEnroll:hover { background: #fbc02d; color: #1a237e; }
+        </style>
+        <script>
+        // Floating enroll form show/hide
+        const enrollBox = document.getElementById('floatingEnroll');
+        const openBtn = document.getElementById('openEnroll');
+        document.getElementById('closeEnroll').onclick = function() {
+            enrollBox.style.display = 'none';
+            openBtn.style.display = 'flex';
+        };
+        openBtn.onclick = function() {
+            enrollBox.style.display = 'block';
+            openBtn.style.display = 'none';
+        };
+        </script>
+        <!-- Interactive Scrolling News Bar with Pause on Hover -->
+        <div style="width:100vw;background:#1a237e;color:#fff;position:fixed;top:0;left:0;z-index:9999;overflow:hidden;">
+            <div id="newsBar" style="white-space:nowrap;animation:scrollNews 18s linear infinite;font-size:1.08em;padding:8px 0;cursor:pointer;">
+                <span style="margin-right:48px;">🌟 New: Volunteer registrations open for 2025! </span>
+                <span style="margin-right:48px;">📢 Health Camp this Sunday at City Center. </span>
+                <span style="margin-right:48px;">🎉 50,000+ lives impacted by our programs! </span>
+                <span style="margin-right:48px;">🚀 Join our Youth Leadership Bootcamp – Apply now! </span>
+                <span style="margin-right:48px;">💡 Sustainability drive: Donate your old books and clothes.</span>
+            </div>
+        </div>
+        <style>
+        @keyframes scrollNews {
+            0% { transform: translateX(100vw); }
+            100% { transform: translateX(-120vw); }
+        }
+        </style>
+        <script>
+        // Pause news bar on hover
+        const newsBar = document.getElementById('newsBar');
+        newsBar.addEventListener('mouseenter', () => newsBar.style.animationPlayState = 'paused');
+        newsBar.addEventListener('mouseleave', () => newsBar.style.animationPlayState = 'running');
+        </script>
+        <!-- Scrolling Image/Carousel with Modal Preview -->
+        <div style="max-width:1100px;margin:32px auto 24px auto;overflow:hidden;border-radius:18px;box-shadow:0 4px 24px rgba(44,62,80,0.10);background:#fff;">
+            <div id="scrollingImages" style="display:flex;gap:0;animation:scrollImg 30s linear infinite;cursor:pointer;">
+                <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80" alt="Impact" style="height:180px;width:auto;display:block;">
+                <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=600&q=80" alt="Volunteers" style="height:180px;width:auto;display:block;">
+                <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=600&q=80" alt="Community" style="height:180px;width:auto;display:block;">
+                <img src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=600&q=80" alt="Event" style="height:180px;width:auto;display:block;">
+                <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80" alt="Impact2" style="height:180px;width:auto;display:block;">
+            </div>
+        </div>
+        <div id="imgModal" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.7);z-index:2000;align-items:center;justify-content:center;">
+            <img id="modalImg" src="" alt="Preview" style="max-width:90vw;max-height:80vh;border-radius:18px;box-shadow:0 8px 32px rgba(44,62,80,0.22);">
+        </div>
+        <style>
+        @keyframes scrollImg {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-60%); }
+        }
+        </style>
+        <script>
+        // Scrolling image modal preview
+        var imgModal = document.getElementById('imgModal');
+        var modalImg = document.getElementById('modalImg');
+        document.getElementById('scrollingImages').onclick = function(e) {
+            if(e.target.tagName === 'IMG') {
+                modalImg.src = e.target.src;
+                imgModal.style.display = 'flex';
+            }
+        };
+        imgModal.onclick = function() { imgModal.style.display = 'none'; };
+        </script>
+    </div>
+    <footer style="background:#1a237e;color:#fff;padding:32px 0 18px 0;margin-top:48px;">
+        <div style="max-width:1200px;margin:0 auto;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;padding:0 18px;">
+            <div style="flex:2 1 320px;min-width:200px;margin-bottom:12px;">
+                <nav style="display:flex;flex-wrap:wrap;gap:18px;justify-content:center;">
+                    <a href="#about" style="color:#fff;text-decoration:none;font-size:1em;">About</a>
+                    <a href="#contact-section" style="color:#fff;text-decoration:none;font-size:1em;">Contact</a>
+                    <a href="#" style="color:#fff;text-decoration:none;font-size:1em;">Privacy Policy</a>
+                    <a href="#" style="color:#fff;text-decoration:none;font-size:1em;">Terms of Use</a>
+                </nav>
+            </div>
+            <div style="flex:1 1 220px;min-width:180px;text-align:right;">
+                <div style="display:flex;gap:10px;justify-content:flex-end;">
+                    <a href="https://www.instagram.com/wetheleadersfoundation" target="_blank" style="color:#fff;"><img src="https://wetheleader.org/images/social/instagram.svg" alt="Instagram" style="height:24px;"></a>
+                    <a href="https://www.linkedin.com/company/we-the-leaders-foundation/" target="_blank" style="color:#fff;"><img src="https://wetheleader.org/images/social/linkedin.svg" alt="LinkedIn" style="height:24px;"></a>
+                    <a href="https://www.facebook.com/share/1Bg5vFPzi3/?mibextid=wwXIfr" target="_blank" style="color:#fff;"><img src="https://wetheleader.org/images/social/facebook.svg" alt="Facebook" style="height:24px;"></a>
+                    <a href="https://x.com/WTLFoundation" target="_blank" style="color:#fff;"><img src="https://wetheleader.org/images/social/twitter.svg" alt="Twitter" style="height:24px;"></a>
+                </div>
+            </div>
+        </div>
+        <div style="text-align:center;margin-top:18px;font-size:0.98em;color:#bbb;">&copy; 2025 Sandy Goodwill Trust. All rights reserved.</div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+    // Volunteer form handler
+    document.getElementById('volunteerForm').onsubmit = function(e) {
+        e.preventDefault();
+        document.getElementById('formSuccess').style.display = 'block';
+        this.reset();
+    };
+    // Pie chart
+    new Chart(document.getElementById('pieChart').getContext('2d'), {
+        type: 'pie',
+        data: {
+            labels: ['Education', 'Health', 'Sustainability', 'Youth Leadership'],
+            datasets: [{
+                data: [35, 25, 20, 20],
+                backgroundColor: ['#3498db', '#e84393', '#27ae60', '#f39c12'],
+            }]
+        },
+        options: {
+            plugins: { legend: { position: 'bottom' } },
+            animation: { animateScale: true }
+        }
+    });
+    // Bar chart
+    new Chart(document.getElementById('barChart').getContext('2d'), {
+        type: 'bar',
+        data: {
+            labels: ['2019', '2020', '2021', '2022', '2023'],
+            datasets: [{
+                label: 'Volunteers Joined',
+                data: [1200, 1800, 2500, 3200, 4000],
+                backgroundColor: '#1a237e',
+                borderRadius: 8
+            }]
+        },
+        options: {
+            plugins: { legend: { display: false } },
+            animation: { duration: 1200 },
+            scales: { y: { beginAtZero: true } }
+        }
+    });
     </script>
 </body>
 </html>
