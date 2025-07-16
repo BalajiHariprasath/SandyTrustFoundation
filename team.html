@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+    <style>
+        .pillars-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 28px;
+            justify-content: center;
+            margin-top: 24px;
+        }
+        .pillar {
+            background: linear-gradient(120deg,#f6d365 0%,#fda085 100%);
+            border-radius: 16px;
+            box-shadow: 0 2px 12px rgba(44,62,80,0.10);
+            padding: 24px 18px 18px 18px;
+            min-width: 220px;
+            max-width: 260px;
+            text-align: center;
+            transition: box-shadow 0.3s, transform 0.2s, background 0.3s;
+            color: #1a237e;
+            font-size: 1.08em;
+        }
+        .pillar:hover {
+            background: linear-gradient(120deg,#fda085 0%,#f6d365 100%);
+            box-shadow: 0 8px 32px rgba(44,62,80,0.18);
+            transform: translateY(-8px) scale(1.04);
+            color: #222;
+        }
+        .pillar h3 {
+            margin-bottom: 10px;
+            font-size: 1.18em;
+            color: #3949ab;
+            font-weight: 700;
+        }
+        .pillar p {
+            margin: 6px 0;
+            color: #333;
+        }
+        .team-section ul li {
+            margin-bottom: 10px;
+            padding-left: 6px;
+            border-radius: 8px;
+            transition: background 0.3s, transform 0.2s, box-shadow 0.2s;
+        }
+        .team-section ul li:hover {
+            background: linear-gradient(90deg,#fda085 0%,#fffde4 100%);
+            transform: scale(1.03);
+            box-shadow: 0 2px 12px rgba(44,62,80,0.10);
+        }
+    @keyframes fadeInLeft {
+      from { opacity: 0; transform: translateX(-40px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes fadeInRight {
+      from { opacity: 0; transform: translateX(40px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    .team-section .column {
+      transition: box-shadow 0.3s, transform 0.3s;
+      background: linear-gradient(120deg,#fffde4 0%,#f6d365 100%);
+      border-radius: 14px;
+      box-shadow: 0 2px 12px rgba(44,62,80,0.08);
+      padding: 24px 16px 18px 16px;
+      margin: 0;
+    }
+    .team-section .column:hover {
+      box-shadow: 0 6px 24px rgba(44,62,80,0.18);
+      transform: translateY(-6px) scale(1.03);
+      background: linear-gradient(120deg,#fda085 0%,#f6d365 100%);
+    }
+    .team-section .cta-btn {
+      background: linear-gradient(90deg,#1a237e 0%,#3949ab 100%);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 28px;
+      font-size: 1.08em;
+      box-shadow: 0 2px 8px rgba(44,62,80,0.10);
+      transition: background 0.3s, box-shadow 0.3s;
+    }
+    .team-section .cta-btn:hover {
+      background: linear-gradient(90deg,#3949ab 0%,#1a237e 100%);
+      box-shadow: 0 4px 16px rgba(44,62,80,0.18);
+    }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>அணி - பாரத் நேதாஜி அறக்கட்டளை</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Tamil:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="main.css">
+    <style>
+        .team-section h1 {
+            text-align: center;
+            color: #1a237e;
+            font-size: 2.2em;
+            margin-bottom: 18px;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav-tabs">
+        <a href="index.html">முகப்பு</a>
+        <a href="vision.html">குறிக்கோள்</a>
+        <a href="sectors.html">முக்கிய துறைகள்</a>
+        <a href="team.html" class="active">அணி</a>
+        <a href="contact.html">தொடர்பு</a>
+    </nav>
+    <main>
+        <section class="team-section">
+            <h1>அணி</h1>
+            <div class="pillars-row">
+                <div class="pillar">
+                    <h3>நிர்வாக இயக்குனர்</h3>
+                    <p>பெயர்: ராஜா</p>
+                    <p>வயது: 45</p>
+                    <p>பதவி: நிர்வாக இயக்குனர்</p>
+                </div>
+                <div class="pillar">
+                    <h3>இணை இயக்குனர்</h3>
+                    <p>பெயர்: சுரேஷ்</p>
+                    <p>வயது: 42</p>
+                    <p>பதவி: இணை இயக்குனர்</p>
+                </div>
+                <div class="pillar">
+                    <h3>நிறுவனர்</h3>
+                    <p>பெயர்: அருண்</p>
+                    <p>வயது: 50</p>
+                    <p>பதவி: நிறுவனர்</p>
+                </div>
+                <div class="pillar">
+                    <h3>நிதி மேலாளர்</h3>
+                    <p>பெயர்: லதா</p>
+                    <p>வயது: 38</p>
+                    <p>பதவி: நிதி மேலாளர்</p>
+                </div>
+                <div class="pillar">
+                    <h3>இணை உறுப்பினர்</h3>
+                    <p>பெயர்: பிரியா</p>
+                    <p>வயது: 36</p>
+                    <p>பதவி: இணை உறுப்பினர்</p>
+                </div>
+                <div class="pillar">
+                    <h3>ஆலோசகர்</h3>
+                    <p>பெயர்: ரமேஷ்</p>
+                    <p>வயது: 48</p>
+                    <p>பதவி: ஆலோசகர்</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer style="background:#1a237e;color:#fff;padding:32px 0;text-align:center;margin-top:40px;">
+        <p>© 2025 பாரத் நேதாஜி அறக்கட்டளை</p>
+    </footer>
+    <script src="main.js"></script>
+</body>
+</html>

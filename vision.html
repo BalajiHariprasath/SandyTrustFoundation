@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+    <style>
+        .key-sectors-section h1 {
+            color: #1a237e;
+            font-size: 2.2em;
+            margin-bottom: 18px;
+            font-weight: 700;
+            text-align: center;
+        }
+        .key-sectors-section ul {
+            text-align: left;
+            line-height: 2.1;
+            font-size: 1.13em;
+            color: #222;
+            background: #fffde4;
+            padding: 24px 18px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(44,62,80,0.07);
+            margin: 0 auto;
+            max-width: 800px;
+        }
+        .key-sectors-section ul li {
+            margin-bottom: 10px;
+            padding-left: 6px;
+            border-radius: 8px;
+            transition: background 0.3s, transform 0.2s, box-shadow 0.2s;
+        }
+        .key-sectors-section ul li:hover {
+            background: linear-gradient(90deg,#fda085 0%,#fffde4 100%);
+            transform: scale(1.03);
+            box-shadow: 0 2px 12px rgba(44,62,80,0.10);
+        }
+        @keyframes fadeInLeft {
+            from { opacity: 0; transform: translateX(-40px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(40px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        .key-sectors-section .column {
+            transition: box-shadow 0.3s, transform 0.3s;
+            background: linear-gradient(120deg,#fffde4 0%,#f6d365 100%);
+            border-radius: 14px;
+            box-shadow: 0 2px 12px rgba(44,62,80,0.08);
+            padding: 24px 16px 18px 16px;
+            margin: 0;
+        }
+        .key-sectors-section .column:hover {
+            box-shadow: 0 6px 24px rgba(44,62,80,0.18);
+            transform: translateY(-6px) scale(1.03);
+            background: linear-gradient(120deg,#fda085 0%,#f6d365 100%);
+        }
+        .key-sectors-section .cta-btn {
+            background: linear-gradient(90deg,#1a237e 0%,#3949ab 100%);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            padding: 10px 28px;
+            font-size: 1.08em;
+            box-shadow: 0 2px 8px rgba(44,62,80,0.10);
+            transition: background 0.3s, box-shadow 0.3s;
+        }
+        .key-sectors-section .cta-btn:hover {
+            background: linear-gradient(90deg,#3949ab 0%,#1a237e 100%);
+            box-shadow: 0 4px 16px rgba(44,62,80,0.18);
+        }
+        footer { background:#1a237e; color:#fff; padding:32px 0; text-align:center; margin-top:40px; }
+        @media (max-width: 900px) { .key-sectors-section { padding: 18px 6px; } }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>குறிக்கோள் - பாரத் நேதாஜி அறக்கட்டளை</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Tamil:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Noto Sans Tamil', Arial, sans-serif; background: linear-gradient(135deg, #0f2027 0%, #2c5364 100%); margin: 0; min-height: 100vh; }
+        .nav-tabs { display: flex; justify-content: center; background: #fff; box-shadow: 0 2px 8px rgba(44,62,80,0.07); margin-bottom: 0; }
+        .nav-tabs a { flex: 1; text-align: center; padding: 18px 0; color: #1a237e; text-decoration: none; font-weight: 700; font-size: 1.1em; border-bottom: 3px solid transparent; transition: border 0.2s, background 0.2s; }
+        .nav-tabs a.active, .nav-tabs a:hover { border-bottom: 3px solid #fbc02d; background: #f6d36522; }
+        .key-sectors-section { background:#eaf6fb; max-width:900px; margin:40px auto 24px auto; padding:32px 18px 24px 18px; border-radius:18px; box-shadow:0 4px 24px rgba(44,62,80,0.10); }
+        .key-sectors-section h1 { color:#1a237e; }
+        .key-sectors-section ul {
+            text-align: left;
+            line-height: 2.1;
+            font-size: 1.13em;
+            color: #222;
+            background: #fffde4; /* light yellow for consistency */
+            padding: 24px 18px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(44,62,80,0.07);
+            margin: 0 auto;
+            max-width: 800px;
+        }
+        .key-sectors-section ul li {
+            margin-bottom: 10px;
+            padding-left: 6px;
+            border-radius: 8px;
+            transition: background 0.3s, transform 0.2s, box-shadow 0.2s;
+        }
+        .key-sectors-section ul li:hover {
+            background: linear-gradient(90deg,#fda085 0%,#fffde4 100%);
+            transform: scale(1.03);
+            box-shadow: 0 2px 12px rgba(44,62,80,0.10);
+        }
+        
+        footer { background:#1a237e; color:#fff; padding:32px 0; text-align:center; margin-top:40px; }
+        @media (max-width: 900px) { .key-sectors-section { padding: 18px 6px; } }
+    </style>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <nav class="nav-tabs">
+        <a href="index.html">முகப்பு</a>
+        <a href="vision.html">குறிக்கோள்</a>
+        <a href="sectors.html" class="active">முக்கிய துறைகள்</a>
+        <a href="team.html">அணி</a>
+        <a href="contact.html">தொடர்பு</a>
+    </nav>
+     <main>
+        <section class="vision-section">
+            <h1>குறிக்கோள் </h1>
+            <ul>
+                <li>இராணுவத்தில் சேர விரும்பும் இளைஞர்களை ஊக்குவித்தல் மற்றும் உதவுதல், நிதி உதவி வழங்குதல் மற்றும் பயிற்சி முகாம்களில் சேர்ப்பது.</li>
+                <li>முன்னாள் ராணுவ வீரர்கள் மற்றும் ராணுவத்தில் வீரமரணம் அடைந்த ராணுவ வீரர்களின் நலிவடைந்த குடும்பங்களை தேர்வு செய்து உதவுதல் மற்றும் கௌரவித்தல்.</li>
+                <li>பண்டைய கலாச்சாரங்களையும் கலைகளையும் பாதுகாத்து, அவற்றை மக்களிடமும் இளைஞர்களிடமும் கொண்டு செல்வது.</li>
+                <li>பண்டைய கலை மற்றும் கலாச்சார கலைஞர்களை கெளரவித்தல் மற்றும் உதவுதல்.</li>
+                <li>நேதாஜியின் வாழ்க்கை, கொள்கைகள் மற்றும் தேசிய உணர்வுகளை இளைஞர்களிடம் கொண்டு சேர்த்தல்.</li>
+                <li>பழங்காலக் கலைகளில் ஒன்றான சிலம்பத்தைப் பற்றி பள்ளி மாணவர்களுக்கு புரிதலை ஏற்படுத்தி, இலவச வகுப்புகள் வழங்குதல் மற்றும் மாநில அளவிலான போட்டிகள் நடத்துதல்.</li>
+                <li>கல்வி உதவித் திட்டங்கள், புலமைத் தேர்வுகள் மற்றும் மருத்துவ ரத்ததான முகாம் நடத்துதல்.</li>
+                <li>தொழில்நுட்ப பயிற்சி மற்றும் வாழ்க்கைத் திறன் பயிற்சிகளை வழங்குதல்.</li>
+                <li>தேசபக்தியை ஊக்குவிக்கும் போட்டிகள், முகாம்கள் மற்றும் விழாக்கள் நடத்துதல்.</li>
+                <li>அரசு பள்ளிகளில் கழிவறைகள் கட்டுதல் மற்றும் புதுப்பித்தல்.</li>
+                <li>பள்ளி மாணவர்களுக்கு இலவச புத்தகங்கள், கல்வி உதவிகள் மற்றும் கல்வி வசதிகளை வழங்குதல்.</li>
+                <li>நேதாஜியைப் பற்றி ஆராய்ச்சி செய்து, நூல்கள், ஆவணங்கள், சுண்காட்சி நிகழ்வுகள் நடத்துதல்.</li>
+                <li>ஏழை, எளிய மாணவ, மாணவியர்களுக்கு கல்விக்கான நிதி உதவிகள், புத்தகங்கள் மற்றும் கல்வி வசதிகளை வழங்குதல்.</li>
+                <li>தேசியம் சார்ந்த முக்கிய நிகழ்வுகளில், மக்கள் பங்கெடுக்க, விழிப்புணர்வு நிகழ்ச்சிகள்.</li>
+                <li>மாநிலம், மாவட்டம் மற்றும் ஊர்மட்டத்தில் BNF தன்னார்வலர் குழுக்களை அமைத்து மக்கள் சேவையை விரிவாக்குதல்.</li>
+                <li>புதிய தலைமுறையினருக்கான Netaji Leadership Training Camps அமைத்தல்.</li>
+                <li>தேசபக்தி மற்றும் தேசிய ஒருமைப்பாட்டை ஊக்குவிக்கும் சமுதாயத்தை உருவாக்குதல்.</li>
+                <li>இளைஞர்களை நாட்டு முன்னேற்றத்திற்கு வழிவகுக்கும் தலைவர்களாக உருவாக்குதல்.</li>
+                <li>கல்வி மற்றும் சமூக நலன் மூலம், ஏழை எளிய மக்களின் வாழ்வை உயர்த்துதல்.</li>
+                <li>சிறுவர்கள் மற்றும் பெண்களுக்கான பாதுகாப்பான மற்றும் ஊக்கமளிக்கும் சூழலை உருவாக்குதல்.</li>
+                <li>நேதாஜி நினைவுநாள், தேசிய நிகழ்வுகள், விழிப்புணர்வு நாட்கள் கொண்டாடுதல் மற்றும் நினைவு கூறுதல்.</li>
+                <li>ஒரு புதிய இந்தியா - "தன்னிறைவையும், சமூக நலத்தையும் நோக்கமாகக் கொண்டு ஒரு வலிமையான இளைய பாரதத்தை உருவாக்குதல்."</li>
+            </ul>
+        </section>
+    </main>
+    <footer>
+        <p>© 2025 பாரத் நேதாஜி அறக்கட்டளை</p>
+    </footer>
+    <script src="main.js"></script>
+</body>
+</html>

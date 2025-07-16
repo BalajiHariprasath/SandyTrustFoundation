@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+    <style>
+        .about-section ul li {
+            margin-bottom: 10px;
+            padding-left: 6px;
+            border-radius: 8px;
+            transition: background 0.4s, transform 0.3s, box-shadow 0.3s;
+            background: #fffde4;
+        }
+        .about-section ul li:hover {
+            background: linear-gradient(90deg,#fda085 0%,#fffde4 100%);
+            transform: translateX(18px) scale(1.04);
+            box-shadow: 0 2px 12px rgba(44,62,80,0.10);
+        }
+        .contact-section ul li {
+            margin-bottom: 10px;
+            padding-left: 6px;
+            border-radius: 8px;
+            transition: background 0.3s, transform 0.2s, box-shadow 0.2s;
+        }
+        .contact-section ul li:hover {
+            background: linear-gradient(90deg,#fda085 0%,#fffde4 100%);
+            transform: scale(1.03);
+            box-shadow: 0 2px 12px rgba(44,62,80,0.10);
+        }
+    @keyframes fadeInLeft {
+      from { opacity: 0; transform: translateX(-40px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes fadeInRight {
+      from { opacity: 0; transform: translateX(40px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    .contact-section .column {
+      transition: box-shadow 0.3s, transform 0.3s;
+      background: linear-gradient(120deg,#fffde4 0%,#f6d365 100%);
+      border-radius: 14px;
+      box-shadow: 0 2px 12px rgba(44,62,80,0.08);
+      padding: 24px 16px 18px 16px;
+      margin: 0;
+    }
+    .contact-section .column:hover {
+      box-shadow: 0 6px 24px rgba(44,62,80,0.18);
+      transform: translateY(-6px) scale(1.03);
+      background: linear-gradient(120deg,#fda085 0%,#f6d365 100%);
+    }
+    .contact-section .cta-btn {
+      background: linear-gradient(90deg,#1a237e 0%,#3949ab 100%);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 28px;
+      font-size: 1.08em;
+      box-shadow: 0 2px 8px rgba(44,62,80,0.10);
+      transition: background 0.3s, box-shadow 0.3s;
+    }
+    .contact-section .cta-btn:hover {
+      background: linear-gradient(90deg,#3949ab 0%,#1a237e 100%);
+      box-shadow: 0 4px 16px rgba(44,62,80,0.18);
+    }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>தொடர்பு - பாரத் நேதாஜி அறக்கட்டளை</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Tamil:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="main.css">
+    <style>
+        .contact-section {
+            background: #fffde4;
+            max-width: 700px;
+            margin: 40px auto 24px auto;
+            padding: 32px 18px 24px 18px;
+            border-radius: 18px;
+            box-shadow: 0 4px 24px rgba(44,62,80,0.10);
+        }
+        .account-details {
+            background: #fffde4;
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav-tabs">
+        <a href="index.html">முகப்பு</a>
+        <a href="vision.html">குறிக்கோள்</a>
+        <a href="sectors.html">முக்கிய துறைகள்</a>
+        <a href="team.html">அணி</a>
+        <a href="contact.html" class="active">தொடர்பு</a>
+    </nav>
+    <main>
+        <!-- Contact Section with Two Columns -->
+        <section class="about-section" style="max-width:1100px;margin:40px auto 24px auto;padding:32px 18px 24px 18px;background:linear-gradient(120deg,#f6d365 0%,#fda085 100%);border-radius:18px;box-shadow:0 4px 24px rgba(44,62,80,0.10);">
+          <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:stretch;gap:32px;">
+            <div class="column" style="flex:1 1 340px;min-width:280px;text-align:center;animation:fadeInLeft 1.2s;">
+              <h2 style="font-size:2.2em;color:#1a237e;margin-bottom:12px;">தொடர்பு</h2>
+              <div style="font-size:1.15em;color:#222;margin-bottom:18px;">எங்களை தொடர்புகொள்ள:</div>
+              <ul style="list-style:none;padding:0;margin:0 0 18px 0;font-size:1.13em;">
+                <li style="margin-bottom:10px;">மின்னஞ்சல்: info@bharatnetaji.org</li>
+                <li style="margin-bottom:10px;">தொலைபேசி: +91-XXXXXXXXXX</li>
+                <li style="margin-bottom:10px;">முகவரி: 123, சென்னை, இந்தியா</li>
+              </ul>
+              <a href="mailto:info@bharatnetaji.org" class="cta-btn" style="margin-top:12px;display:inline-block;">Email மூலம் தொடர்பு கொள்ளுங்கள்</a>
+            </div>
+            <div class="column" style="flex:1 1 340px;min-width:280px;text-align:center;animation:fadeInRight 1.2s;">
+              <h2 style="font-size:2em;color:#1a237e;margin-bottom:12px;">நன்கொடை விவரங்கள்</h2>
+              <div style="font-size:1.12em;color:#3949ab;margin-bottom:18px;">நன்கொடை வழங்க கணக்கு விவரங்கள்</div>
+              <ul style="list-style:none;padding:0;margin:0 0 18px 0;font-size:1.13em;">
+                <li style="margin-bottom:10px;">வங்கி பெயர்: இந்தியா ஸ்டேட் வங்கி</li>
+                <li style="margin-bottom:10px;">கணக்கு எண்: 1234567890</li>
+                <li style="margin-bottom:10px;">IFSC குறியீடு: SBIN0001234</li>
+                <li style="margin-bottom:10px;">கணக்கு பெயர்: பாரத் நேதாஜி அறக்கட்டளை</li>
+              </ul>
+              <div style="margin-top:18px;font-size:1em;">உங்கள் நன்கொடைக்கு நன்றி!</div>
+            </div>
+          </div>
+        </section>
+    </main>
+    <footer style="background:#1a237e;color:#fff;padding:32px 0;text-align:center;margin-top:40px;">
+        <p>© 2025 பாரத் நேதாஜி அறக்கட்டளை</p>
+    </footer>
+    <script src="main.js"></script>
+</body>
+</html>
